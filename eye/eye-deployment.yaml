@@ -24,7 +24,7 @@ spec:
           volumeMounts:
             - name: local-storage
               mountPath: /mnt/models
-      restartPolicy: OnFailure
+      restartPolicy: Always
       volumes:
         - name: local-storage
           persistentVolumeClaim:
