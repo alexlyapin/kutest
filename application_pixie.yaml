@@ -7,7 +7,7 @@ spec:
   project: default
 
   source:
-    repoURL: git@github.com:alexlyapin/kutest.git
+    repoURL: https://github.com/mythrion/kubernetes-environment.git
     targetRevision: HEAD
     path: pixie
 
