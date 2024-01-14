@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: eye-deployment
+spec:
+  replicas: 1 # Adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: eye
+  template:
+    metadata:
+      labels:
+        app: eye
+    spec:
+      containers:
+        - name: eye
+          image: mythrion/eye:latest
+          imagePullPolicy: Never
+          envFrom:
+            - configMapRef:
+                name: eye-configmap
+            - secretRef:
+                name: eye-secret
+          volumeMounts:
+            - name: local-storage
+              mountPath: /mnt/models
+      restartPolicy: OnFailure
+      volumes:
+        - name: local-storage
+          persistentVolumeClaim:
+            claimName: eye-pvc

@@ -1,0 +1,7 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: pixie-configmap
+data:
+  DB_URL: postgres://postgres:postgres@postgres:5432/postgres
+  MQ_URL: amqp://guest:guest@rabbit:5672/

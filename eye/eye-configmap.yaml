@@ -1,0 +1,19 @@
+apiVersion: v1
+kind: ConfigMap
+metadata:
+  name: eye-configmap
+data:
+  DB_HOST: postgres
+  DB_PORT: 5432
+  DB_USER: postgres
+  DB_NAME: postgres
+
+  RABBIT_HOST: rabbit
+  RABBIT_PORT: 5672
+  RABBIT_QUEUE: probedata_scan
+  TIME_TO_WAIT_FOR_RABBIT: 5
+  ATTEMPTS_TO_REQUEST_RABBIT: 10
+  MQ_ROUTING_KEY: uuid
+
+  TEXT_MODEL: /mnt/models/text_2.pt
+  DIGITS_MODEL: /mnt/models/numbers_2.pt

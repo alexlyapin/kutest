@@ -1,0 +1,9 @@
+apiVersion: v1
+# Kind for kubernets ConfigMap
+kind: ConfigMap
+metadata:
+  # Name your ConfigMap
+  name: db-config
+data:
+  # Default DB
+  POSTGRES_DB: postgres

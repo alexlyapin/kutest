@@ -1,0 +1,31 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: pixie-deployment
+spec:
+  replicas: 1 # Adjust the number of replicas as needed
+  selector:
+    matchLabels:
+      app: pixie
+  template:
+    metadata:
+      labels:
+        app: pixie
+    spec:
+      containers:
+        - name: pixie
+          image: mythrion/pixie:latest
+          imagePullPolicy: Never
+          envFrom:
+            - configMapRef:
+                name: pixie-configmap
+            - secretRef:
+                name: pixie-secret
+          volumeMounts:
+            - name: local-storage
+              mountPath: /mnt/models
+      restartPolicy: OnFailure
+      volumes:
+        - name: local-storage
+          persistentVolumeClaim:
+            claimName: pixie-pvc
