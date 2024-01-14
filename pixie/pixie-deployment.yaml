@@ -21,11 +21,4 @@ spec:
                 name: pixie-configmap
             - secretRef:
                 name: pixie-secret
-          volumeMounts:
-            - name: local-storage
-              mountPath: /mnt/models
       restartPolicy: Always
-      volumes:
-        - name: local-storage
-          persistentVolumeClaim:
-            claimName: pixie-pvc
